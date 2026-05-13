@@ -718,7 +718,7 @@ img { max-width: 100%; display: block; }
   </div>
 </div>
 
-<!-- 公告弹窗 -->
+<!-- 公告弹窗（每日一次） -->
 <div class="notice-overlay" id="noticeModal">
   <div class="notice-box">
     <span class="notice-close" onclick="closeNotice()">&times;</span>
@@ -966,13 +966,20 @@ function closeModal(e) {
   if (!e || e.target.id === 'modal') document.getElementById('modal').classList.remove('active');
 }
 
-// 公告弹窗
+// 公告弹窗（每日一次）
 function openNotice() { document.getElementById('noticeModal').classList.add('active'); }
 function closeNotice() { document.getElementById('noticeModal').classList.remove('active'); }
-// 页面加载后延迟显示公告
-window.addEventListener('load', function() {
-  setTimeout(openNotice, 800);
-});
+
+// 每日只弹一次
+function checkDailyNotice() {
+  var today = new Date().toISOString().slice(0, 10);
+  var lastShown = localStorage.getItem('wc_notice_date');
+  if (lastShown !== today) {
+    setTimeout(openNotice, 800);
+    localStorage.setItem('wc_notice_date', today);
+  }
+}
+window.addEventListener('load', checkDailyNotice);
 
 // 漂浮按钮弹窗
 var _floatLink = '';
