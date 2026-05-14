@@ -471,7 +471,7 @@ img { max-width: 100%; display: block; }
   z-index: 150;
 }
 .float-btn {
-  width: 50px; height: 50px;
+  width: 64px; height: 64px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--green-dark), var(--green));
   color: var(--white);
@@ -480,14 +480,28 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   font-size: 22px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(11,122,62,0.35);
+  box-shadow: 0 6px 20px rgba(11,122,62,0.4);
   transition: all 0.3s;
   text-decoration: none;
 }
 .float-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(11,122,62,0.5);
+  transform: scale(1.12);
+  box-shadow: 0 8px 28px rgba(11,122,62,0.6);
 }
+.float-tooltip {
+  position: absolute;
+  right: 76px;
+  background: var(--text);
+  color: var(--white);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.float-btn:hover .float-tooltip { opacity: 1; }
 .float-btn.gold {
   background: linear-gradient(135deg, var(--gold), #e8b923);
   color: var(--green-dark);
@@ -536,7 +550,8 @@ img { max-width: 100%; display: block; }
 }
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: minmax(200px, 320px);
+  justify-content: center;
   gap: 20px;
 }
 .contact-card {
@@ -678,7 +693,7 @@ img { max-width: 100%; display: block; }
     <div class="pc-hero-content">
       <h2>2026 <span>美加墨</span><br>世界杯盛宴</h2>
       <p>全球48支球队竞逐荣耀，首次由三国联合举办。见证绿茵传奇，共享足球狂欢。</p>
-      <p>皇冠正网 雷速统一赔率<br>首冲增15% 每周固定福利 诚招代理</p>
+      <p>皇冠正网 雷速统一赔率<br>首充赠送10-15% 每周固定福利 诚招代理</p>
       <div class="pc-countdown">
         <div class="cd-box"><div class="cd-num" id="cd-d">--</div><div class="cd-label">天</div></div>
         <div class="cd-box"><div class="cd-num" id="cd-h">--</div><div class="cd-label">时</div></div>
@@ -725,30 +740,12 @@ img { max-width: 100%; display: block; }
     <h3>📢 联系我们</h3>
     <p>如有任何问题，欢迎通过以下方式联系</p>
     <div class="notice-contact-list">
-      <a href="https://t.me/tiyu728" target="_blank" style="text-decoration:none;">
-        <div class="notice-contact-item">
-          <div class="notice-icon" style="padding:0;background:transparent;"><img src="./img/tg.jpg" style="width:40px;height:40px;border-radius:50%;object-fit:cover;"></div>
-          <div class="notice-info">
-            <div class="label">飞机TG</div>
-            <div class="value">tiyu728</div>
-          </div>
-        </div>
-      </a>
       <a href="https://13t.cn" target="_blank" style="text-decoration:none;">
         <div class="notice-contact-item">
-          <div class="notice-icon" style="padding:0;background:transparent;"><img src="./img/3t.png" style="width:40px;height:40px;border-radius:50%;object-fit:cover;"></div>
+          <div class="notice-icon" style="padding:0;background:transparent;width:64px;height:64px;"><img src="./img/3t.png" style="width:64px;height:64px;border-radius:50%;object-fit:cover;"></div>
           <div class="notice-info">
-            <div class="label">三条</div>
-            <div class="value">tiyu728</div>
-          </div>
-        </div>
-      </a>
-      <a href="https://yuni.com.cn" target="_blank" style="text-decoration:none;">
-        <div class="notice-contact-item">
-          <div class="notice-icon" style="padding:0;background:transparent;"><img src="./img/yuni.png" style="width:40px;height:40px;border-radius:50%;object-fit:cover;"></div>
-          <div class="notice-info">
-            <div class="label">与你</div>
-            <div class="value">tiyu728</div>
+            <div class="label" style="font-size:16px;">三条</div>
+            <div class="value" style="font-size:22px;color:var(--green-dark);font-weight:800;">tiyu728</div>
           </div>
         </div>
       </a>
@@ -842,30 +839,36 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
+<!-- 三条大横幅 -->
+<section style="background: linear-gradient(135deg, var(--green-dark), var(--green)); padding: 50px 20px; text-align: center; position: relative; overflow: hidden;">
+  <div style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: rgba(201,162,39,0.15); border-radius: 50%;"></div>
+  <div style="position: absolute; bottom: -30px; left: -30px; width: 160px; height: 160px; background: rgba(201,162,39,0.1); border-radius: 50%;"></div>
+  <div style="max-width: 600px; margin: 0 auto; position: relative; z-index: 2;">
+    <div style="font-size: 18px; color: var(--gold-light); font-weight: 700; margin-bottom: 12px; letter-spacing: 2px;">官方指定联系方式</div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <a href="https://13t.cn" target="_blank" style="text-decoration:none;">
+        <div style="background: var(--white); border-radius: var(--radius); padding: 25px 50px; display: flex; align-items: center; gap: 15px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); transition: all 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+          <img src="./img/3t.png" style="width:64px;height:64px;border-radius:50%;object-fit:cover;">
+          <div style="text-align: left;">
+            <div style="font-size: 13px; color: var(--text-muted); font-weight: 600;">三条</div>
+            <div style="font-size: 28px; color: var(--green-dark); font-weight: 800; letter-spacing: 2px;">tiyu728</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- 赛程下方联系方式 -->
 <section class="pc-section" id="contact">
   <h2 class="pc-section-title">联系我们</h2>
   <p class="pc-section-sub">随时为您提供专业服务与支持</p>
   <div class="contact-section">
     <div class="contact-grid">
-      <a href="https://t.me/tiyu728" target="_blank" style="text-decoration:none;">
-        <div class="contact-card">
-          <div class="contact-card-icon" style="padding:0;background:transparent;"><img src="./img/tg.jpg" style="width:56px;height:56px;border-radius:50%;object-fit:cover;"></div>
-          <div class="contact-card-label">飞机TG</div>
-          <div class="contact-card-value">tiyu728</div>
-        </div>
-      </a>
       <a href="https://13t.cn" target="_blank" style="text-decoration:none;">
         <div class="contact-card">
-          <div class="contact-card-icon" style="padding:0;background:transparent;"><img src="./img/3t.png" style="width:56px;height:56px;border-radius:50%;object-fit:cover;"></div>
+          <div class="contact-card-icon" style="padding:0;background:transparent;"><img src="./img/3t.png" style="width:72px;height:72px;border-radius:50%;object-fit:cover;"></div>
           <div class="contact-card-label">三条</div>
-          <div class="contact-card-value">tiyu728</div>
-        </div>
-      </a>
-      <a href="https://yuni.com.cn" target="_blank" style="text-decoration:none;">
-        <div class="contact-card">
-          <div class="contact-card-icon" style="padding:0;background:transparent;"><img src="./img/yuni.png" style="width:56px;height:56px;border-radius:50%;object-fit:cover;"></div>
-          <div class="contact-card-label">与你</div>
           <div class="contact-card-value">tiyu728</div>
         </div>
       </a>
@@ -922,17 +925,9 @@ img { max-width: 100%; display: block; }
 
 <!-- 右侧漂浮按钮 -->
 <div class="float-btns">
-  <div class="float-btn" onclick="openFloatNotice('飞机TG','./img/tg.jpg','tiyu728','https://t.me/tiyu728')">
-    <span class="float-tooltip">飞机TG</span>
-    <img src="./img/tg.jpg" style="width:28px;height:28px;border-radius:50%;object-fit:cover;">
-  </div>
-  <div class="float-btn gold" onclick="openFloatNotice('三条','./img/3t.png','tiyu728','https://13t.cn')">
+  <div class="float-btn gold" onclick="openFloatNotice('三条','./img/3t.png','tiyu728','https://13t.cn')" style="width:72px;height:72px;">
     <span class="float-tooltip">三条</span>
-    <img src="./img/3t.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;">
-  </div>
-  <div class="float-btn blue" onclick="openFloatNotice('与你','./img/yuni.png','tiyu728','https://yuni.com.cn')">
-    <span class="float-tooltip">与你</span>
-    <img src="./img/yuni.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;">
+    <img src="./img/3t.png" style="width:36px;height:36px;border-radius:50%;object-fit:cover;">
   </div>
 </div>
 
